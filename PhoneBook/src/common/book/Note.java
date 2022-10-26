@@ -1,4 +1,4 @@
-package Book;
+package common.book;
 
 public class Note {
     //Fields
@@ -13,11 +13,18 @@ public class Note {
         this.phoneNumber = 0;
     }
     public Note(String firstName, String lastName, int phoneNumber) {
-        ;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        if(phoneNumber > 0) {
+            this.phoneNumber = phoneNumber;
+        } else this.phoneNumber = 0;
     }
     //Getters
     public String getNoteInfo() {
-        return "\nFIRST NAME: " + this.firstName + "\tLAST NAME: " + this.lastName + "\tNUMBER: " + this.phoneNumber;
+        return "----------------------------------------" +
+                "\nFirst name: " + firstName.toUpperCase() + "\nLast name: " + this.lastName.toUpperCase() +
+                "\nNumber: " + this.phoneNumber +
+               "\n----------------------------------------";
     }
     public String getFirstName() {
         return this.firstName;

@@ -1,4 +1,6 @@
-import Book.Note;
+package common;
+
+import common.book.Note;
 
 import java.util.ArrayList;
 
@@ -10,7 +12,8 @@ public class Book {
         phoneList.add(note);
     }
     void createNote(String firsName, String lastName, int number) {
-        ;
+        Note note = new Note(firsName, lastName, number);
+        phoneList.add(note);
     }
     void deleteNote(Note note) {
         ;
@@ -18,11 +21,14 @@ public class Book {
     void editNote(Note note) {
         ;
     }
-    String showNote(int noteNumber) {
+    public String showNote(int noteNumber) {
         if(noteNumber + 1 <= phoneList.size()) {
             return phoneList.get(noteNumber).getNoteInfo();
         } else {
-            return "Phone book is empty";
+            return "Note doesn't exist";
         }
+    }
+    public int showNotesQuantity() {
+        return phoneList.size();
     }
 }
