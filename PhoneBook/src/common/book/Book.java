@@ -1,21 +1,17 @@
-package common;
+package common.book;
 
 import common.book.Note;
 
 import java.util.ArrayList;
 
 public class Book {
-    private String bookName;
-    public Book(String bookName) {
-        this.bookName = bookName;
-    }
     ArrayList<Note> phoneList = new ArrayList<>();
 
-    void createNote() {
+    public void createNote() {
         Note note = new Note();
         phoneList.add(note);
     }
-    void createNote(String firsName, String lastName, int number) {
+    public void createNote(String firsName, String lastName, int number) {
         Note note = new Note(firsName, lastName, number);
         phoneList.add(note);
     }
@@ -35,4 +31,9 @@ public class Book {
     public int showNotesQuantity() {
         return phoneList.size();
     }
+    public static void getList(Book book) {
+        for (int i = 0; i < book.showNotesQuantity(); i++){
+            System.out.println(book.showNote(i));
+        }
+    };
 }

@@ -13,11 +13,9 @@ public class Note {
         this.phoneNumber = 0;
     }
     public Note(String firstName, String lastName, int phoneNumber) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        if(phoneNumber > 0) {
-            this.phoneNumber = phoneNumber;
-        } else this.phoneNumber = 0;
+        setFirstName(firstName);
+        setLastName(lastName);
+        setPhoneNumber(phoneNumber);
     }
     //Getters
     public String getNoteInfo() {
@@ -37,12 +35,24 @@ public class Note {
     }
     //Setters
     public void setFirstName(String firstName) {
-        ;
+        if (firstName != null && firstName != "") {
+            this.firstName = firstName;
+        } else {
+            this.firstName = "Unknown";
+        }
     }
     public void setLastName(String lastName) {
-        ;
+        if (lastName != null && lastName != "") {
+            this.lastName = lastName;
+        } else {
+            this.lastName = "Unknown";
+        }
     }
     public void setPhoneNumber(int phoneNumber) {
-        ;
+        if(phoneNumber > 0) {
+            this.phoneNumber = phoneNumber;
+        } else {
+            this.phoneNumber = 0;
+        }
     }
 }
