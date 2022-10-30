@@ -11,11 +11,6 @@ public class Help {
         System.out.println("help - show HELP");
         System.out.println("list - show list of BOOK NOTES");
         System.out.println("exit - exit from program");
-        System.out.println("Type \"back\" to exit from help");
-        do {
-            System.out.print("COMMAND: ");
-            command = scanner.nextLine();
-        } while (!(command.equals("back")));
-        System.out.print("---------MAIN MENU------------\nCOMMAND: ");
+        System.out.println("---------MAIN MENU------------");
     }
 }
