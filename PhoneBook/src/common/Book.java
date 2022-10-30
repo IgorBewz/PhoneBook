@@ -5,6 +5,10 @@ import common.book.Note;
 import java.util.ArrayList;
 
 public class Book {
+    private String bookName;
+    public Book(String bookName) {
+        this.bookName = bookName;
+    }
     ArrayList<Note> phoneList = new ArrayList<Note>();
 
     void createNote() {
