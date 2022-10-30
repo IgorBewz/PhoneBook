@@ -9,7 +9,7 @@ public class Book {
     public Book(String bookName) {
         this.bookName = bookName;
     }
-    ArrayList<Note> phoneList = new ArrayList<Note>();
+    ArrayList<Note> phoneList = new ArrayList<>();
 
     void createNote() {
         Note note = new Note();
