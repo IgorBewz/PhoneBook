@@ -1,8 +1,11 @@
 package common.menu;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 import common.book.Book;
+
+import static common.book.Book.data_load_file;
 
 public class MainMenu {
     public MainMenu() {
@@ -46,6 +49,21 @@ public class MainMenu {
                 case "help": {
                     Help help = new Help();
                     break;
+                }
+                case "datafile":{
+                    try {
+                        book.data_writes_file();
+                        System.out.println("Data writes to file");
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+                case "loadfile":{
+                    try {
+                        book.data_load_file();
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
                 }
                 case "exit": {
                     break;
