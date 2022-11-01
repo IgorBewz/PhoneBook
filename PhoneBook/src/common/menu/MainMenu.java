@@ -52,7 +52,7 @@ public class MainMenu {
                 }
                 case "datafile":{
                     try {
-                        book.data_writes_file();
+                        book.data_writes_file(book);
                         System.out.println("Data writes to file");
                     } catch (IOException e) {
                         throw new RuntimeException(e);

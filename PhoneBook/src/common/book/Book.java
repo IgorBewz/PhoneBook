@@ -22,14 +22,12 @@ public class Book  {
         ;
     }
     //saveNote_in_file - зберігає БД в текстовому файлі phone.txt
-    public  void data_writes_file() throws IOException {
-        List<Note>notes = new ArrayList<>(phoneList);
+    public  void data_writes_file(Book book) throws IOException {
+        //List<Note>notes = new ArrayList<>(phoneList);
         BufferedWriter writer = new BufferedWriter(new FileWriter("phone.txt"));
-        for(Note note1: phoneList){
-            String name1 = note1.getFirstName();
-            String name2 = note1.getLastName();
-            int numer = note1.getPhoneNumber();
-            writer.write(name1 + " " + name2 + " " + numer + System.getProperty("line.separator"));
+        for (int i = 0; i < book.showNotesQuantity(); i++){
+            writer.write(book.showNote(i));
+            System.out.println(book.showNote(i));
         }
         writer.close();
     }
