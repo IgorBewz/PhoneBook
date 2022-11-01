@@ -23,7 +23,6 @@ public class Book  {
     }
     //saveNote_in_file - зберігає БД в текстовому файлі phone.txt
     public  void data_writes_file(Book book) throws IOException {
-        //List<Note>notes = new ArrayList<>(phoneList);
         BufferedWriter writer = new BufferedWriter(new FileWriter("phone.txt"));
         for (int i = 0; i < book.showNotesQuantity(); i++){
             writer.write(book.showNote(i));
@@ -40,8 +39,6 @@ public class Book  {
             BufferedReader reader = new BufferedReader(new FileReader(new File("phone.txt")));
             String act;
             while ((act=reader.readLine())!=null) {
-                //String[] dat = act.split(" ");
-                //list.add(dat[0], dat[1], dat[3]);
                 list.add(act);
                 System.out.println(list);
 
