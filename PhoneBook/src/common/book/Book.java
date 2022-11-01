@@ -4,7 +4,7 @@ import common.book.Note;
 
 import java.util.ArrayList;
 
-public class Book {
+public class Book  {
     ArrayList<Note> phoneList = new ArrayList<>();
 
     public void createNote() {
