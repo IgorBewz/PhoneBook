@@ -8,10 +8,6 @@ import common.book.Book;
 public class MainMenu {
     public MainMenu() {
         Book book = new Book();
-        //book.createNote("Tobias", "Ripper", 202);
-        //book.createNote("Tomas", "Anderson", 404);
-        //book.createNote();
-
         System.out.println("|----------------------------|");
         System.out.println("|----WELCOME TO PHONE BOOK---|");
         System.out.println("|----------------------------|");
