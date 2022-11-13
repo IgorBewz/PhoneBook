@@ -5,8 +5,6 @@ import java.util.Scanner;
 
 import common.book.Book;
 
-import static common.book.Book.data_load_file;
-
 public class MainMenu {
     public MainMenu() {
         Book book = new Book();
@@ -50,20 +48,22 @@ public class MainMenu {
                     Help help = new Help();
                     break;
                 }
-                case "datafile":{
+                case "save":{
                     try {
                         book.data_writes_file(book);
-                        System.out.println("Data writes to file");
+                        System.out.println("Data written to file");
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
+                    break;
                 }
-                case "loadfile":{
+                case "load":{
                     try {
                         book.data_load_file();
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
+                    break;
                 }
                 case "exit": {
                     break;

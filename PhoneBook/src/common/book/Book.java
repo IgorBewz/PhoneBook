@@ -6,7 +6,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-
+import common.Main;
 public class Book  {
     ArrayList<Note> phoneList = new ArrayList<>();
 
@@ -21,18 +21,26 @@ public class Book  {
     void deleteNote(Note note) {
         ;
     }
-    //saveNote_in_file - зберігає БД в текстовому файлі phone.txt
+    //saveNote_in_file - пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ phone.txt
     public  void data_writes_file(Book book) throws IOException {
         BufferedWriter writer = new BufferedWriter(new FileWriter("phone.txt"));
+        Note note = new Note();
         for (int i = 0; i < book.showNotesQuantity(); i++){
-            writer.write(book.showNote(i));
-            System.out.println(book.showNote(i));
+            //writer.write(book.phoneList.size());
+            note = book.phoneList.get(i);
+            writer.write(note.getFirstName());
+            writer.newLine();
+            writer.write(note.getLastName());
+            writer.newLine();
+            writer.write(Integer.toString(note.getPhoneNumber()));
+            writer.newLine();
+            //System.out.println(book.showNote(i));
         }
         writer.close();
     }
-    //data_load_file() - завантажує БД з текстового файлу phone.txt
-    //виконує перевірку на наявність файла
-    public static void data_load_file() throws IOException {
+    //data_load_file() - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ phone.txt
+    //пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+    public void data_load_file() throws IOException {
         ArrayList<String> list = new ArrayList<String>();
         File file = new File("phone.txt");
         if (file.exists()){
@@ -40,11 +48,28 @@ public class Book  {
             String act;
             while ((act=reader.readLine())!=null) {
                 list.add(act);
-                System.out.println(list);
-
+                //System.out.println(list);
             }
             reader.close();
         }
+        int listCounter = 0;
+            while (listCounter < list.size()) {
+                Note note = new Note();
+                if (listCounter < list.size()) {
+                    note.setFirstName(list.get(listCounter));
+                    listCounter++;
+                }
+                if (listCounter < list.size()) {
+                    note.setLastName(list.get(listCounter));
+                    listCounter++;
+                }
+                if (listCounter < list.size()) {
+                    note.setPhoneNumber(Integer.parseInt(list.get(listCounter)));
+                    listCounter++;
+                }
+                phoneList.add(note);
+            }
+        System.out.println("Loading from file complete.");
     }
     public String showNote(int noteNumber) {
         if(noteNumber + 1 <= phoneList.size()) {
