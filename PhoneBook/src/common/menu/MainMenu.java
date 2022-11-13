@@ -8,18 +8,15 @@ import common.book.Book;
 public class MainMenu {
     public MainMenu() {
         Book book = new Book();
-        //book.createNote("Tobias", "Ripper", 202);
-        //book.createNote("Tomas", "Anderson", 404);
-        //book.createNote();
-
         System.out.println("|----------------------------|");
         System.out.println("|----WELCOME TO PHONE BOOK---|");
         System.out.println("|----------------------------|");
         System.out.println("---------MAIN MENU------------");
         System.out.println("Type \"help\" to list a commands");
-        String command = "";
+        String command;
         Scanner scanner = new Scanner(System.in);
         do {
+            System.out.println("help | create | list | save | load | delete | exit  ");
             System.out.print("COMMAND: ");
             command = scanner.nextLine();
             switch (command) {
@@ -53,7 +50,7 @@ public class MainMenu {
                 }
                 case "list": {
                     System.out.println("---------LIST OF NOTES---------");
-                    book.getList(book);
+                    Book.getList(book);
                     break;
                 }
                 case "help": {
