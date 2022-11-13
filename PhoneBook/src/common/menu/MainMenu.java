@@ -16,6 +16,7 @@ public class MainMenu {
         String command = "";
         Scanner scanner = new Scanner(System.in);
         do {
+            System.out.println(" help | create | list | save | load | delete | exit  ");
             System.out.print("COMMAND: ");
             command = scanner.nextLine();
             switch (command) {
