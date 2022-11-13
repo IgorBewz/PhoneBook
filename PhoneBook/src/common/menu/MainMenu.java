@@ -39,6 +39,18 @@ public class MainMenu {
                     command = scanner.nextLine();
                     break;
                 }
+                case "delete": {
+                    System.out.print("Enter subscriber's ID, that you want to delete: ");
+                    int id = scanner.nextInt();
+                    if((id < 1) || (id > book.showNotesQuantity())) {
+                        System.out.println("Subscriber with this ID doesn't exist.");
+                    } else {
+                        book.deleteNote(id - 1);
+                        System.out.println("Subscriber deleted");
+                    }
+                    command = scanner.nextLine();
+                    break;
+                }
                 case "list": {
                     System.out.println("---------LIST OF NOTES---------");
                     book.getList(book);

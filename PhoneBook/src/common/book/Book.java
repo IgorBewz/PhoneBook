@@ -21,8 +21,11 @@ public class Book  {
         Note note = new Note(id, firsName, lastName, number);
         phoneList.add(note);
     }
-    void deleteNote(Note note) {
-        ;
+    public void deleteNote(int id) {
+        phoneList.remove(id);
+    /*    for (int i = id; i < phoneList.size(); i++) {
+            renumberIDsOnPhoneList(i);
+        }*/
     }
     //saveNote_in_file - ������ �� � ���������� ���� phone.txt
     public  void data_writes_file(Book book) throws IOException {
@@ -94,5 +97,8 @@ public class Book  {
         for (int i = 0; i < book.showNotesQuantity(); i++){
             System.out.println(book.showNote(i));
         }
+    }
+    private void renumberIDsOnPhoneList(int startID) {
+        ;
     }
 }
