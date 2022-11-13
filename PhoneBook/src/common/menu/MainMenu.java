@@ -31,7 +31,7 @@ public class MainMenu {
                     String lastName = scanner.nextLine();
                     System.out.print("Enter a phone NUMBER: ");
                     int number = scanner.nextInt();
-                    book.createNote(firstName, lastName, number);
+                    book.createNote(book.showNotesQuantity() + 1, firstName, lastName, number);
                     System.out.println("******************************");
                     System.out.println("Created note: ");
                     System.out.println(book.showNote(book.showNotesQuantity() - 1));

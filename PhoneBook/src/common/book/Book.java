@@ -1,21 +1,24 @@
 package common.book;
 
-import common.book.Note;
-
 import java.io.*;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import common.Main;
 public class Book  {
     ArrayList<Note> phoneList = new ArrayList<>();
 
     public void createNote() {
-        Note note = new Note();
+        Note note = new Note(phoneList.size() + 1);
+        phoneList.add(note);
+    }
+    public void createNote(int id) {
+        Note note = new Note(id);
         phoneList.add(note);
     }
     public void createNote(String firsName, String lastName, int number) {
         Note note = new Note(firsName, lastName, number);
+        phoneList.add(note);
+    }
+    public void createNote(int id, String firsName, String lastName, int number) {
+        Note note = new Note(id, firsName, lastName, number);
         phoneList.add(note);
     }
     void deleteNote(Note note) {
@@ -28,6 +31,8 @@ public class Book  {
         for (int i = 0; i < book.showNotesQuantity(); i++){
             //writer.write(book.phoneList.size());
             note = book.phoneList.get(i);
+            writer.write(Integer.toString(note.getId()));
+            writer.newLine();
             writer.write(note.getFirstName());
             writer.newLine();
             writer.write(note.getLastName());
@@ -41,7 +46,7 @@ public class Book  {
     //data_load_file() - ��������� �� � ���������� ����� phone.txt
     //������ �������� �� �������� �����
     public void data_load_file() throws IOException {
-        ArrayList<String> list = new ArrayList<String>();
+        ArrayList<String> list = new ArrayList<>();
         File file = new File("phone.txt");
         if (file.exists()){
             BufferedReader reader = new BufferedReader(new FileReader(new File("phone.txt")));
@@ -55,6 +60,10 @@ public class Book  {
         int listCounter = 0;
             while (listCounter < list.size()) {
                 Note note = new Note();
+                if (listCounter < list.size()) {
+                    note.setId(Integer.parseInt(list.get(listCounter)));
+                    listCounter++;
+                }
                 if (listCounter < list.size()) {
                     note.setFirstName(list.get(listCounter));
                     listCounter++;
@@ -85,5 +94,5 @@ public class Book  {
         for (int i = 0; i < book.showNotesQuantity(); i++){
             System.out.println(book.showNote(i));
         }
-    };
+    }
 }

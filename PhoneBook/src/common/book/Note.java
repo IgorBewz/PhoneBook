@@ -2,12 +2,14 @@ package common.book;
 
 public class Note {
     //Fields
+    private int id;
     private String firstName;
     private String lastName;
     private int phoneNumber;
 
     //Constructors
     public Note() {
+        this.id = 0;
         this.firstName = "Unknown";
         this.lastName = "Unknown";
         this.phoneNumber = 0;
@@ -17,13 +19,27 @@ public class Note {
         setLastName(lastName);
         setPhoneNumber(phoneNumber);
     }
+    public Note(int id, String firstName, String lastName, int phoneNumber) {
+        setId(id);
+        setFirstName(firstName);
+        setLastName(lastName);
+        setPhoneNumber(phoneNumber);
+    }
+    public Note(int id) {
+        setId(id);
+    }
     //Getters
     public String getNoteInfo() {
         return "----------------------------------------" +
-                "\nFirst name: " + firstName.toUpperCase() + "\nLast name: " + this.lastName.toUpperCase() +
+                "\nID: " + id + "\nFirst name: " + firstName.toUpperCase() + "\nLast name: " + this.lastName.toUpperCase() +
                 "\nNumber: " + this.phoneNumber +
                "\n----------------------------------------";
     }
+
+    public int getId() {
+        return id;
+    }
+
     public String getFirstName() {
         return this.firstName;
     }
@@ -34,15 +50,20 @@ public class Note {
         return this.phoneNumber;
     }
     //Setters
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public void setFirstName(String firstName) {
-        if (firstName != null && firstName != "") {
+        if (firstName != null && !(firstName.equals(""))) {
             this.firstName = firstName;
         } else {
             this.firstName = "Unknown";
         }
     }
     public void setLastName(String lastName) {
-        if (lastName != null && lastName != "") {
+        if (lastName != null && !(lastName.equals(""))) {
             this.lastName = lastName;
         } else {
             this.lastName = "Unknown";
