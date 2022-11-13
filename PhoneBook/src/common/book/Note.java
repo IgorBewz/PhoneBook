@@ -14,19 +14,11 @@ public class Note {
         this.lastName = "Unknown";
         this.phoneNumber = 0;
     }
-    public Note(String firstName, String lastName, int phoneNumber) {
-        setFirstName(firstName);
-        setLastName(lastName);
-        setPhoneNumber(phoneNumber);
-    }
     public Note(int id, String firstName, String lastName, int phoneNumber) {
         setId(id);
         setFirstName(firstName);
         setLastName(lastName);
         setPhoneNumber(phoneNumber);
-    }
-    public Note(int id) {
-        setId(id);
     }
     //Getters
     public String getNoteInfo() {

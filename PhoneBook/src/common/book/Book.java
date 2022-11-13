@@ -5,34 +5,18 @@ import java.util.ArrayList;
 public class Book  {
     ArrayList<Note> phoneList = new ArrayList<>();
 
-    public void createNote() {
-        Note note = new Note(phoneList.size() + 1);
-        phoneList.add(note);
-    }
-    public void createNote(int id) {
-        Note note = new Note(id);
-        phoneList.add(note);
-    }
-    public void createNote(String firsName, String lastName, int number) {
-        Note note = new Note(firsName, lastName, number);
-        phoneList.add(note);
-    }
     public void createNote(int id, String firsName, String lastName, int number) {
         Note note = new Note(id, firsName, lastName, number);
         phoneList.add(note);
     }
     public void deleteNote(int id) {
         phoneList.remove(id);
-    /*    for (int i = id; i < phoneList.size(); i++) {
-            renumberIDsOnPhoneList(i);
-        }*/
     }
     //saveNote_in_file - ������ �� � ���������� ���� phone.txt
     public  void data_writes_file(Book book) throws IOException {
         BufferedWriter writer = new BufferedWriter(new FileWriter("phone.txt"));
         Note note = new Note();
         for (int i = 0; i < book.showNotesQuantity(); i++){
-            //writer.write(book.phoneList.size());
             note = book.phoneList.get(i);
             writer.write(Integer.toString(note.getId()));
             writer.newLine();
@@ -42,7 +26,6 @@ public class Book  {
             writer.newLine();
             writer.write(Integer.toString(note.getPhoneNumber()));
             writer.newLine();
-            //System.out.println(book.showNote(i));
         }
         writer.close();
     }
@@ -52,11 +35,10 @@ public class Book  {
         ArrayList<String> list = new ArrayList<>();
         File file = new File("phone.txt");
         if (file.exists()){
-            BufferedReader reader = new BufferedReader(new FileReader(new File("phone.txt")));
+            BufferedReader reader = new BufferedReader(new FileReader("phone.txt"));
             String act;
             while ((act=reader.readLine())!=null) {
                 list.add(act);
-                //System.out.println(list);
             }
             reader.close();
         }
@@ -98,7 +80,5 @@ public class Book  {
             System.out.println(book.showNote(i));
         }
     }
-    private void renumberIDsOnPhoneList(int startID) {
-        ;
-    }
+
 }
