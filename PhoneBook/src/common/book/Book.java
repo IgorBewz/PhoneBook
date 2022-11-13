@@ -98,7 +98,6 @@ public class Book  {
             System.out.println(book.showNote(i));
         }
     }
-    private void renumberIDsOnPhoneList(int startID) {
-        ;
+    private void renumberIDsOnPhoneList(int ID) {
     }
 }
