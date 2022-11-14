@@ -16,7 +16,7 @@ public class MainMenu {
         String command;
         Scanner scanner = new Scanner(System.in);
         do {
-            System.out.println("help | create | list | save | load | delete | exit  ");
+            System.out.println("help | create | list | find | save | load | delete | exit  ");
             System.out.print("COMMAND: ");
             command = scanner.nextLine();
             switch (command) {
@@ -53,8 +53,15 @@ public class MainMenu {
                     Book.getList(book);
                     break;
                 }
+                case "find": {
+                    System.out.print("Enter NAME of NUMBER: ");
+                    String findValue = scanner.nextLine();
+                    book.findContact(findValue);
+                    //command = scanner.nextLine();
+                    break;
+                }
                 case "help": {
-                    Help help = new Help();
+                    new Help();
                     break;
                 }
                 case "save":{
