@@ -21,13 +21,22 @@ public class MainMenu {
             command = scanner.nextLine();
             switch (command) {
                 case "create": {
+                    String firstName = "";
+                    String lastName = "";
+                    int number = 0;
                     System.out.println("----------CREATE A NOTE----------");
                     System.out.print("Enter a FIRST name: ");
-                    String firstName = scanner.nextLine();
+                    if (scanner.hasNextLine()) {
+                        firstName = scanner.nextLine();
+                    } else {System.out.println("It's not name. Name will be UNKNOWN. You can change it later.");}
                     System.out.print("Enter a LAST name: ");
-                    String lastName = scanner.nextLine();
+                    if (scanner.hasNextLine()) {
+                        lastName = scanner.nextLine();
+                    } else {System.out.println("It's not name. Name will be UNKNOWN. You can change it later.");}
                     System.out.print("Enter a phone NUMBER: ");
-                    int number = scanner.nextInt();
+                    if (scanner.hasNextInt()) {
+                        number = scanner.nextInt();
+                    } else {System.out.println("It's not number. Number will be 0. You can change it later.");}
                     book.createNote(book.showNotesQuantity() + 1, firstName, lastName, number);
                     System.out.println("******************************");
                     System.out.println("Created note: ");
