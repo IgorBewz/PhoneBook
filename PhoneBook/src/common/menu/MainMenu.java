@@ -6,7 +6,7 @@ import java.util.Scanner;
 import common.book.Book;
 
 public class MainMenu {
-    public MainMenu() {
+    public MainMenu() throws IOException {
         Book book = new Book();
         System.out.println("|----------------------------|");
         System.out.println("|----WELCOME TO PHONE BOOK---|");
@@ -46,6 +46,11 @@ public class MainMenu {
                         System.out.println("Subscriber deleted");
                     }
                     command = scanner.nextLine();
+                    break;
+                }
+                case "search": {
+                    System.out.println("---------LIST OF NOTES---------");
+                    Book.searchNote(book);
                     break;
                 }
                 case "list": {

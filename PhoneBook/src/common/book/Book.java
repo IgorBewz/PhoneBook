@@ -12,6 +12,16 @@ public class Book  {
     public void deleteNote(int id) {
         phoneList.remove(id);
     }
+
+    public  static void searchNote(Book book ) throws IOException {
+        Note note = new Note();
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        System.out.println("Write FirstName for search");
+        String name = reader.readLine();
+        if (name.equals(note.getFirstName())){
+            System.out.println(note.getFirstName());
+        }
+    }
     //saveNote_in_file - ������ �� � ���������� ���� phone.txt
     public  void data_writes_file(Book book) throws IOException {
         BufferedWriter writer = new BufferedWriter(new FileWriter("phone.txt"));
