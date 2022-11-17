@@ -21,6 +21,14 @@ public class Note {
         setPhoneNumber(phoneNumber);
     }
     //Getters
+    public Note getNote() {
+        Note note = new Note();
+        note.setId(this.id);
+        note.setFirstName(this.firstName);
+        note.setLastName(this.lastName);
+        note.setPhoneNumber(this.phoneNumber);
+        return note;
+    }
     public String getNoteInfo() {
         return "----------------------------------------" +
                 "\nID: " + id + "\nFirst name: " + firstName.toUpperCase() + "\nLast name: " + this.lastName.toUpperCase() +

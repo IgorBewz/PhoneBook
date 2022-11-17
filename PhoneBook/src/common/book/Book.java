@@ -2,8 +2,7 @@ package common.book;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.HashMap;
-
+import java.lang.Thread;
 public class Book {
     ArrayList<Note> phoneList = new ArrayList<>();
 
@@ -36,7 +35,7 @@ public class Book {
 
     //data_load_file() - ��������� �� � ���������� ����� phone.txt
     //������ �������� �� �������� �����
-    public void data_load_file() throws IOException {
+    public void data_load_file() throws IOException, InterruptedException {
         ArrayList<String> list = new ArrayList<>();
         File file = new File("phone.txt");
         if (file.exists()) {
@@ -48,6 +47,7 @@ public class Book {
             reader.close();
         }
         int listCounter = 0;
+        phoneList.clear();
         while (listCounter < list.size()) {
             Note note = new Note();
             if (listCounter < list.size()) {
@@ -69,6 +69,7 @@ public class Book {
             phoneList.add(note);
         }
         System.out.println("Loading from file complete.");
+        Thread.sleep(1000);
     }
 
     public String showNote(int noteNumber) {
@@ -79,8 +80,8 @@ public class Book {
         }
     }
 
-    public void findContact(String findValue) {
-        findValue = findValue.toUpperCase();
+    public void findContact(String findValue) throws InterruptedException {
+        findValue.toUpperCase();
         Note note = new Note();
         int counter = 0;
         for (int i = 0; i < phoneList.size(); i++) {
@@ -92,7 +93,23 @@ public class Book {
         }
         if (counter == 0) {
             System.out.println("Such contact not found.");
+            Thread.sleep(1000);
         }
+    }
+    public boolean findContactByID (int id) {
+       Note note = new Note();
+       int counter = 0;
+        for (int i = 0; i < phoneList.size(); i++) {
+            note = phoneList.get(i);
+            if (note.getId() == id) {
+                counter++;
+            }
+        }
+        if (counter > 0) return true;
+        else return false;
+    }
+    public void editContact(int id) {
+        ;
     }
     public int showNotesQuantity() {
         return phoneList.size();
@@ -102,5 +119,37 @@ public class Book {
         for (int i = 0; i < book.showNotesQuantity(); i++) {
             System.out.println(book.showNote(i));
         }
+    }
+
+    public void editFirstName (int id, String firstName) {
+        Note note = new Note();
+        for (int i = 0; i < phoneList.size(); i++) {
+            note = phoneList.get(i);
+            if (note.getId() == id) {
+                note.setFirstName(firstName);
+                phoneList.set(i, note);
+            }
+        }
+    }
+    public void editLastName(int id, String lastName) {
+        Note note = new Note();
+        for (int i = 0; i < phoneList.size(); i++) {
+            note = phoneList.get(i);
+            if (note.getId() == id) {
+                note.setLastName(lastName);
+                phoneList.set(i, note);
+            }
+        }
+    }
+    public void editNumber (int id, int number) {
+        Note note = new Note();
+        for (int i = 0; i < phoneList.size(); i++) {
+            note = phoneList.get(i);
+            if (note.getId() == id) {
+                note.setPhoneNumber(number);
+                phoneList.set(i, note);
+            }
+        }
+        ;
     }
 }
