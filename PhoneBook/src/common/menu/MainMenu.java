@@ -123,7 +123,7 @@ public class MainMenu {
                     break;
                 }
                 case "find": {
-                    System.out.print("Enter NAME of NUMBER: ");
+                    System.out.print("Enter NAME or NUMBER: ");
                     String findValue = scanner.nextLine();
                     book.findContact(findValue.toUpperCase());
                     break;
